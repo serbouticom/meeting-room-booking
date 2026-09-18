@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_meeting_room_root" name="Meeting Rooms" sequence="95" groups="group_meeting_room_user"/>
+
+    <menuitem id="menu_meeting_room_booking" name="Bookings" parent="menu_meeting_room_root" action="meeting_room_booking_action" sequence="10"/>
+
+    <menuitem id="menu_meeting_room_config" name="Configuration" parent="menu_meeting_room_root" sequence="90" groups="group_meeting_room_manager"/>
+
+    <menuitem id="menu_meeting_room" name="Meeting Rooms" parent="menu_meeting_room_config" action="meeting_room_action" sequence="10"/>
+
+    <menuitem id="menu_meeting_room_equipment" name="Equipment" parent="menu_meeting_room_config" action="meeting_room_equipment_action" sequence="20"/>
+</odoo>

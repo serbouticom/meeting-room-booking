@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="meeting_room_booking_view_calendar" model="ir.ui.view">
+        <field name="name">meeting.room.booking.calendar</field>
+        <field name="model">meeting.room.booking</field>
+        <field name="arch" type="xml">
+            <calendar string="Bookings" date_start="start" date_stop="stop" color="room_id" mode="week">
+                <field name="room_id" filters="1"/>
+                <field name="user_id" filters="1"/>
+                <field name="state"/>
+            </calendar>
+        </field>
+    </record>
+
+    <record id="meeting_room_booking_view_tree" model="ir.ui.view">
+        <field name="name">meeting.room.booking.tree</field>
+        <field name="model">meeting.room.booking</field>
+        <field name="arch" type="xml">
+            <tree string="Bookings" decoration-muted="state == 'cancelled'" decoration-danger="state == 'rejected'">
+                <field name="reference"/>
+                <field name="name"/>
+                <field name="room_id"/>
+                <field name="user_id"/>
+                <field name="start"/>
+                <field name="stop"/>
+                <field name="duration" widget="float_time" optional="hide"/>
+                <field name="attendees_count" optional="hide"/>
+                <field name="recurrence_id" optional="hide"/>
+                <field name="state" widget="badge" decoration-success="state == 'confirmed'" decoration-warning="state == 'to_approve'" decoration-danger="state == 'rejected'"/>
+                <field name="company_id" groups="base.group_multi_company" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="meeting_room_booking_view_form" model="ir.ui.view">
+        <field name="name">meeting.room.booking.form</field>
+        <field name="model">meeting.room.booking</field>
+        <field name="arch" type="xml">
+            <form string="Booking">
+                <header>
+                    <button name="action_submit" type="object" string="Submit" class="oe_highlight" invisible="state not in ('draft', 'rejected')"/>
+                    <button name="action_approve" type="object" string="Approve" class="oe_highlight" invisible="state != 'to_approve' or not can_approve"/>
+                    <button name="action_reject" type="object" string="Reject" invisible="state != 'to_approve' or not can_approve"/>
+                    <button name="action_cancel" type="object" string="Cancel" invisible="state in ('draft', 'cancelled')"/>
+                    <button name="action_reset_to_draft" type="object" string="Reset to Draft" invisible="state not in ('rejected', 'cancelled')"/>
+                    <field name="can_approve" invisible="1"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,to_approve,confirmed"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="e.g. Weekly Sales Sync"/>
+                        </h1>
+                        <field name="reference" class="text-muted"/>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="room_id" readonly="state == 'confirmed'"/>
+                            <field name="user_id"/>
+                            <field name="attendees_count"/>
+                            <field name="capacity"/>
+                        </group>
+                        <group>
+                            <field name="start" readonly="state == 'confirmed'"/>
+                            <field name="stop" readonly="state == 'confirmed'"/>
+                            <field name="duration" widget="float_time"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                    <group string="Recurrence" invisible="recurrence_id and not recurrency">
+                        <field name="recurrence_id" invisible="1"/>
+                        <field name="recurrency" readonly="id != False"/>
+                        <label for="repeat_interval" string="Repeat Every" invisible="not recurrency"/>
+                        <div class="o_row" invisible="not recurrency">
+                            <field name="repeat_interval" class="oe_inline" readonly="id != False"/>
+                            <field name="repeat_unit" class="oe_inline" readonly="id != False"/>
+                        </div>
+                        <field name="repeat_until" invisible="not recurrency" required="recurrency" readonly="id != False"/>
+                    </group>
+                    <notebook>
+                        <page string="Attendees" name="attendees">
+                            <field name="partner_ids" widget="many2many_tags"/>
+                        </page>
+                        <page string="Description" name="description">
+                            <field name="description"/>
+                        </page>
+                        <page string="Occurrences" name="occurrences" invisible="not recurrence_booking_ids">
+                            <field name="recurrence_booking_ids" readonly="1">
+                                <tree>
+                                    <field name="reference"/>
+                                    <field name="start"/>
+                                    <field name="stop"/>
+                                    <field name="state"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="meeting_room_booking_view_search" model="ir.ui.view">
+        <field name="name">meeting.room.booking.search</field>
+        <field name="model">meeting.room.booking</field>
+        <field name="arch" type="xml">
+            <search string="Bookings">
+                <field name="name"/>
+                <field name="reference"/>
+                <field name="room_id"/>
+                <field name="user_id"/>
+                <field name="partner_ids"/>
+                <filter name="my_bookings" string="My Bookings" domain="[('user_id', '=', uid)]"/>
+                <filter name="to_approve_by_me" string="To Approve by Me" domain="[('state', '=', 'to_approve'), ('room_id.responsible_id', '=', uid)]"/>
+                <separator/>
+                <filter name="draft" string="Draft" domain="[('state', '=', 'draft')]"/>
+                <filter name="to_approve" string="To Approve" domain="[('state', '=', 'to_approve')]"/>
+                <filter name="confirmed" string="Confirmed" domain="[('state', '=', 'confirmed')]"/>
+                <separator/>
+                <filter name="upcoming" string="Upcoming" domain="[('stop', '&gt;=', context_today().strftime('%Y-%m-%d'))]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_room" string="Meeting Room" context="{'group_by': 'room_id'}"/>
+                    <filter name="group_user" string="Organizer" context="{'group_by': 'user_id'}"/>
+                    <filter name="group_state" string="Status" context="{'group_by': 'state'}"/>
+                    <filter name="group_start" string="Start Date" context="{'group_by': 'start'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="meeting_room_booking_action" model="ir.actions.act_window">
+        <field name="name">Bookings</field>
+        <field name="res_model">meeting.room.booking</field>
+        <field name="view_mode">calendar,tree,form,activity</field>
+        <field name="context">{'search_default_upcoming': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Book a meeting room</p>
+            <p>Check availability on the calendar, submit your request and get it approved.</p>
+        </field>
+    </record>
+</odoo>

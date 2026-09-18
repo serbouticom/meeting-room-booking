@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="meeting_room_view_tree" model="ir.ui.view">
+        <field name="name">meeting.room.tree</field>
+        <field name="model">meeting.room</field>
+        <field name="arch" type="xml">
+            <tree string="Meeting Rooms">
+                <field name="name"/>
+                <field name="location"/>
+                <field name="capacity"/>
+                <field name="responsible_id"/>
+                <field name="requires_approval"/>
+                <field name="booking_count" string="Bookings"/>
+                <field name="company_id" groups="base.group_multi_company" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="meeting_room_view_form" model="ir.ui.view">
+        <field name="name">meeting.room.form</field>
+        <field name="model">meeting.room</field>
+        <field name="arch" type="xml">
+            <form string="Meeting Room">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_bookings" type="object" class="oe_stat_button" icon="fa-calendar">
+                            <field name="booking_count" widget="statinfo" string="Bookings"/>
+                        </button>
+                    </div>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="e.g. Board Room"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="capacity"/>
+                            <field name="location"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                        <group>
+                            <field name="responsible_id"/>
+                            <field name="requires_approval"/>
+                            <field name="color" widget="color_picker"/>
+                            <field name="active" invisible="1"/>
+                        </group>
+                    </group>
+                    <group string="Equipment">
+                        <field name="equipment_ids" widget="many2many_tags" nolabel="1"/>
+                    </group>
+                    <group string="Description">
+                        <field name="description" nolabel="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="meeting_room_view_search" model="ir.ui.view">
+        <field name="name">meeting.room.search</field>
+        <field name="model">meeting.room</field>
+        <field name="arch" type="xml">
+            <search string="Meeting Rooms">
+                <field name="name"/>
+                <field name="location"/>
+                <field name="responsible_id"/>
+                <field name="equipment_ids"/>
+                <filter name="requires_approval" string="Requires Approval" domain="[('requires_approval', '=', True)]"/>
+                <filter name="inactive" string="Archived" domain="[('active', '=', False)]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_responsible" string="Responsible" context="{'group_by': 'responsible_id'}"/>
+                    <filter name="group_company" string="Company" context="{'group_by': 'company_id'}" groups="base.group_multi_company"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="meeting_room_action" model="ir.actions.act_window">
+        <field name="name">Meeting Rooms</field>
+        <field name="res_model">meeting.room</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create a meeting room</p>
+            <p>Define capacity, equipment and whether bookings need approval.</p>
+        </field>
+    </record>
+</odoo>

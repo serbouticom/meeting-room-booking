@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="meeting_room_equipment_view_tree" model="ir.ui.view">
+        <field name="name">meeting.room.equipment.tree</field>
+        <field name="model">meeting.room.equipment</field>
+        <field name="arch" type="xml">
+            <tree string="Equipment" editable="bottom">
+                <field name="name"/>
+                <field name="room_ids" widget="many2many_tags" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="meeting_room_equipment_view_search" model="ir.ui.view">
+        <field name="name">meeting.room.equipment.search</field>
+        <field name="model">meeting.room.equipment</field>
+        <field name="arch" type="xml">
+            <search string="Equipment">
+                <field name="name"/>
+                <filter name="inactive" string="Archived" domain="[('active', '=', False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="meeting_room_equipment_action" model="ir.actions.act_window">
+        <field name="name">Equipment</field>
+        <field name="res_model">meeting.room.equipment</field>
+        <field name="view_mode">tree</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create equipment</p>
+            <p>Projector, video conference system, whiteboard, ... then attach them to your meeting rooms.</p>
+        </field>
+    </record>
+</odoo>

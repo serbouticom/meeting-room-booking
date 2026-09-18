@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="equipment_projector" model="meeting.room.equipment">
+        <field name="name">Projector</field>
+    </record>
+    <record id="equipment_video_conference" model="meeting.room.equipment">
+        <field name="name">Video Conference</field>
+    </record>
+    <record id="equipment_whiteboard" model="meeting.room.equipment">
+        <field name="name">Whiteboard</field>
+    </record>
+
+    <record id="room_board" model="meeting.room">
+        <field name="name">Board Room</field>
+        <field name="location">HQ - 3rd floor</field>
+        <field name="capacity">12</field>
+        <field name="requires_approval" eval="True"/>
+        <field name="responsible_id" ref="base.user_admin"/>
+        <field name="equipment_ids" eval="[(6, 0, [ref('equipment_projector'), ref('equipment_video_conference')])]"/>
+    </record>
+    <record id="room_focus" model="meeting.room">
+        <field name="name">Focus Room</field>
+        <field name="location">HQ - 1st floor</field>
+        <field name="capacity">4</field>
+        <field name="equipment_ids" eval="[(6, 0, [ref('equipment_whiteboard')])]"/>
+    </record>
+</odoo>
