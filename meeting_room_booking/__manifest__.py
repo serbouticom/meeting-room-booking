@@ -26,6 +26,10 @@ See the full description with screenshots on the app page.
     "currency": "EUR",
     "images": [
         "static/description/banner.png",
+        "static/description/screenshot_calendar.png",
+        "static/description/screenshot_room_form.png",
+        "static/description/screenshot_approval.png",
+        "static/description/screenshot_security.png",
     ],
     "depends": [
         "mail",

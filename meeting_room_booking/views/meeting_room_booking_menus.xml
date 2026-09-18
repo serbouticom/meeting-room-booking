@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <menuitem id="menu_meeting_room_root" name="Meeting Rooms" sequence="95" groups="group_meeting_room_user"/>
+    <menuitem
+        id="menu_meeting_room_root"
+        name="Meeting Rooms"
+        sequence="95"
+        groups="group_meeting_room_user"
+        web_icon="meeting_room_booking,static/description/icon.png"
+    />
 
     <menuitem id="menu_meeting_room_booking" name="Bookings" parent="menu_meeting_room_root" action="meeting_room_booking_action" sequence="10"/>
 

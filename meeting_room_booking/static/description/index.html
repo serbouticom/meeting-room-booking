@@ -1,0 +1,280 @@
+<div class="mrb-desc">
+<style>
+.mrb-desc .mrb-hero{text-align:center;padding:8px 0 24px;}
+.mrb-desc .mrb-tagline{color:#6b5a66;font-weight:400;font-size:20px;max-width:760px;margin:0 auto;}
+.mrb-desc .mrb-compat{margin-top:18px;}
+.mrb-desc .mrb-compat span{display:inline-block;margin:0 14px;font-size:14px;color:#4c4c4c;}
+.mrb-desc .mrb-compat i{color:#4caf50;margin-right:6px;}
+.mrb-desc .mrb-grid{display:flex;flex-wrap:wrap;margin:0 -12px;}
+.mrb-desc .mrb-tile{flex:1 1 220px;margin:12px;padding:22px 18px;background:#fff;border:1px solid #ece7ea;border-radius:10px;text-align:center;}
+.mrb-desc .mrb-tile i{font-size:30px;color:#714B67;}
+.mrb-desc .mrb-tile h5{margin:14px 0 0;font-size:15px;font-weight:600;}
+.mrb-desc .mrb-feature{display:flex;flex-wrap:wrap;align-items:center;gap:32px;margin:36px 0;}
+.mrb-desc .mrb-feature.mrb-rev{flex-direction:row-reverse;}
+.mrb-desc .mrb-feature-text{flex:1 1 340px;}
+.mrb-desc .mrb-feature-text h4{margin-top:0;}
+.mrb-desc .mrb-feature-text h4 i{color:#714B67;margin-right:8px;}
+.mrb-desc .mrb-shot{flex:1 1 340px;border:2px dashed #d8cfd6;border-radius:12px;padding:46px 18px;text-align:center;color:#9b8fa0;background:#faf8f9;min-height:180px;}
+.mrb-desc .mrb-shot i{font-size:30px;display:block;margin-bottom:10px;}
+.mrb-desc .mrb-shot code{font-size:12px;color:#77697a;background:none;}
+.mrb-desc .mrb-shot-img{flex:1 1 340px;}
+.mrb-desc .mrb-shot-img img{width:100%;border-radius:10px;border:1px solid #ece7ea;box-shadow:0 4px 16px rgba(43,29,39,.08);}
+.mrb-desc table.mrb-table{width:100%;border-collapse:collapse;font-size:14px;}
+.mrb-desc table.mrb-table td{padding:8px 10px;border-bottom:1px solid #ece7ea;}
+.mrb-desc table.mrb-table td:first-child{color:#6b5a66;font-weight:600;white-space:nowrap;padding-right:24px;}
+.mrb-desc .mrb-faq dt{font-weight:600;margin-top:16px;}
+.mrb-desc .mrb-faq dt i{color:#714B67;margin-right:6px;}
+.mrb-desc .mrb-faq dd{margin:4px 0 0;color:#4c4c4c;}
+.mrb-desc .mrb-vendor{display:flex;flex-wrap:wrap;gap:24px;align-items:center;}
+.mrb-desc .mrb-vendor .mrb-avatar{width:64px;height:64px;border-radius:50%;background:#714B67;color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:600;flex-shrink:0;}
+</style>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced mrb-hero">
+        <h2 class="oe_slogan" style="margin-bottom:6px;">Meeting Room Booking</h2>
+        <p class="mrb-tagline">
+            One shared calendar for every meeting room &mdash; conflict-free, with approvals,
+            capacity checks and recurring bookings built in.
+        </p>
+        <div class="mrb-compat">
+            <span><i class="fa fa-check-circle"></i>Odoo Online</span>
+            <span><i class="fa fa-check-circle"></i>Odoo.sh</span>
+            <span><i class="fa fa-check-circle"></i>On-Premise</span>
+            <span><i class="fa fa-check-circle"></i>Community &amp; Enterprise</span>
+        </div>
+    </div>
+    <div class="oe_row oe_spaced text-center">
+        <img src="banner.png" class="img img-responsive" style="max-width:100%;margin:0 auto;border-radius:8px;"/>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12 text-center">
+            <h3 class="oe_slogan">Everything you need to run your meeting rooms</h3>
+        </div>
+    </div>
+    <div class="mrb-grid">
+        <div class="mrb-tile"><i class="fa fa-calendar"></i><h5>Shared Calendar</h5></div>
+        <div class="mrb-tile"><i class="fa fa-ban"></i><h5>Conflict Detection</h5></div>
+        <div class="mrb-tile"><i class="fa fa-check-circle"></i><h5>Approval Workflow</h5></div>
+        <div class="mrb-tile"><i class="fa fa-users"></i><h5>Capacity Check</h5></div>
+        <div class="mrb-tile"><i class="fa fa-desktop"></i><h5>Equipment Tracking</h5></div>
+        <div class="mrb-tile"><i class="fa fa-repeat"></i><h5>Recurring Bookings</h5></div>
+        <div class="mrb-tile"><i class="fa fa-building"></i><h5>Multi-Company</h5></div>
+        <div class="mrb-tile"><i class="fa fa-bell"></i><h5>Activity Notifications</h5></div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12 text-center">
+            <h3 class="oe_slogan">A closer look</h3>
+        </div>
+    </div>
+
+    <div class="mrb-feature">
+        <div class="mrb-feature-text">
+            <h4><i class="fa fa-calendar"></i>Shared calendar &amp; conflict detection</h4>
+            <p>
+                Every booking lives on one calendar, grouped and colored by room, so anyone can
+                check availability before requesting a slot.
+            </p>
+            <ul>
+                <li>Overlapping requests on the same room are automatically refused.</li>
+                <li>Only <b>To Approve</b> and <b>Confirmed</b> bookings occupy a slot &mdash;
+                    drafts never block a colleague from planning around them.</li>
+                <li>Filter and group by room, organizer or status; jump straight to <i>My Bookings</i>
+                    or <i>Upcoming</i>.</li>
+            </ul>
+        </div>
+        <div class="mrb-shot-img">
+            <img src="screenshot_calendar.png" alt="Meeting Room Booking &ndash; weekly calendar view"/>
+        </div>
+    </div>
+
+    <div class="mrb-feature mrb-rev">
+        <div class="mrb-feature-text">
+            <h4><i class="fa fa-check-circle"></i>Approval workflow</h4>
+            <p>
+                Not every room should confirm itself. Flag a room as <b>Requires Approval</b> and
+                its bookings follow a controlled path:
+            </p>
+            <ul>
+                <li><b>Draft &rarr; To Approve &rarr; Confirmed</b> (or Rejected / Cancelled).</li>
+                <li>The room's <b>Responsible</b> gets a scheduled activity the moment a request is
+                    submitted.</li>
+                <li>Only that responsible &mdash; or a Meeting Room Manager &mdash; can approve or
+                    reject; everyone else just sees the button disappear.</li>
+            </ul>
+        </div>
+        <div class="mrb-shot-img">
+            <img src="screenshot_approval.png" alt="Meeting Room Booking &ndash; booking waiting for approval"/>
+        </div>
+    </div>
+
+    <div class="mrb-feature">
+        <div class="mrb-feature-text">
+            <h4><i class="fa fa-users"></i>Capacity &amp; equipment</h4>
+            <p>Describe each room once, then let the app do the checking:</p>
+            <ul>
+                <li>Set a seat <b>capacity</b> and location for every room.</li>
+                <li>Tag rooms with reusable <b>equipment</b> &mdash; projector, video conference,
+                    whiteboard&hellip;</li>
+                <li>Organizers see an instant warning when the expected headcount exceeds the room
+                    capacity.</li>
+            </ul>
+        </div>
+        <div class="mrb-shot-img">
+            <img src="screenshot_room_form.png" alt="Meeting Room Booking &ndash; room configuration form"/>
+        </div>
+    </div>
+
+    <div class="mrb-feature mrb-rev">
+        <div class="mrb-feature-text">
+            <h4><i class="fa fa-repeat"></i>Recurring bookings</h4>
+            <p>Set up a recurring series once instead of booking every week by hand:</p>
+            <ul>
+                <li>Repeat every N <b>days</b>, <b>weeks</b> or <b>months</b>, until a chosen end
+                    date.</li>
+                <li>All occurrences are generated up front and linked to the original booking.</li>
+                <li>Each occurrence remains an independent booking &mdash; cancel or reschedule one
+                    without touching the rest of the series.</li>
+            </ul>
+        </div>
+        <div class="mrb-shot-img" style="text-align:center;">
+            <img src="screenshot_recurrence.png" alt="Meeting Room Booking &ndash; recurrence settings" style="width:auto;max-width:100%;"/>
+        </div>
+    </div>
+
+    <div class="mrb-feature">
+        <div class="mrb-feature-text">
+            <h4><i class="fa fa-lock"></i>Security &amp; multi-company</h4>
+            <p>Two dedicated access groups keep things simple:</p>
+            <ul>
+                <li><b>User</b> &ndash; sees every booking to check availability, manages their own,
+                    and approves bookings for rooms they are responsible for.</li>
+                <li><b>Manager</b> &ndash; full control over rooms, equipment and every booking.</li>
+                <li>Rooms and bookings are scoped per company out of the box.</li>
+            </ul>
+        </div>
+        <div class="mrb-shot-img">
+            <img src="screenshot_security.png" alt="Meeting Room Booking &ndash; User and Manager access groups"/>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12 text-center">
+            <h3 class="oe_slogan">How it works</h3>
+        </div>
+        <div class="oe_span12">
+            <ol style="font-size:15px;line-height:1.9;max-width:760px;margin:0 auto;">
+                <li>A user opens <b>Meeting Rooms &rsaquo; Bookings</b>, checks the calendar and
+                    creates a request for a room, date and time.</li>
+                <li>They click <b>Submit</b>. If the room needs approval the booking moves to
+                    <b>To Approve</b> and the responsible is notified; otherwise it is
+                    <b>Confirmed</b> right away.</li>
+                <li>The responsible (or a Meeting Room Manager) clicks <b>Approve</b> or
+                    <b>Reject</b>.</li>
+                <li>Confirmed and to-approve bookings reserve the slot: any overlapping request on
+                    the same room is refused.</li>
+            </ol>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span6">
+            <h3 class="oe_slogan">Compatibility &amp; technical info</h3>
+            <table class="mrb-table">
+                <tr><td>Availability</td><td>Odoo Online, Odoo.sh, On-Premise</td></tr>
+                <tr><td>Editions</td><td>Community &amp; Enterprise</td></tr>
+                <tr><td>Odoo version</td><td>17.0</td></tr>
+                <tr><td>Dependencies</td><td><code>mail</code></td></tr>
+                <tr><td>Technical name</td><td><code>meeting_room_booking</code></td></tr>
+            </table>
+        </div>
+        <div class="oe_span6">
+            <h3 class="oe_slogan">Support</h3>
+            <p>
+                Questions before or after purchase? Reach out any time at
+                <a href="mailto:serbouti.com@gmail.com">serbouti.com@gmail.com</a>
+                &mdash; typical response time is under 24h on business days.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12">
+            <h3 class="oe_slogan text-center">Frequently asked questions</h3>
+            <dl class="mrb-faq" style="max-width:820px;margin:24px auto 0;">
+                <dt><i class="fa fa-question-circle"></i>Does it work on Odoo Online?</dt>
+                <dd>Yes. The module only depends on <code>mail</code> and installs the same way on
+                    Odoo Online, Odoo.sh or an on-premise server.</dd>
+
+                <dt><i class="fa fa-question-circle"></i>What happens if two people book the same room at the same time?</dt>
+                <dd>The second request is refused with a clear error naming the conflicting
+                    booking, as soon as it is submitted or confirmed.</dd>
+
+                <dt><i class="fa fa-question-circle"></i>Can I require approval for some rooms only?</dt>
+                <dd>Yes, <i>Requires Approval</i> is a checkbox on each room. Rooms without it
+                    confirm bookings instantly.</dd>
+
+                <dt><i class="fa fa-question-circle"></i>Can I cancel a single occurrence of a recurring booking?</dt>
+                <dd>Yes, every occurrence is its own booking record linked to the series &mdash;
+                    cancel, reschedule or reject one without affecting the others.</dd>
+
+                <dt><i class="fa fa-question-circle"></i>Does it support multiple companies?</dt>
+                <dd>Yes, rooms and bookings carry a company and are scoped with standard Odoo
+                    multi-company rules.</dd>
+
+                <dt><i class="fa fa-question-circle"></i>Does it replace the standard Odoo Calendar/Appointments apps?</dt>
+                <dd>No, it is a focused, standalone app dedicated to internal room booking; it does
+                    not touch <code>calendar.event</code> or the Appointments app.</dd>
+
+                <dt><i class="fa fa-question-circle"></i>Can I try it before buying?</dt>
+                <dd>Install it on a test database first &mdash; demo data ships with two sample
+                    rooms and equipment so you can explore every workflow immediately.</dd>
+            </dl>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12">
+            <h3 class="oe_slogan text-center">About the author</h3>
+            <div class="mrb-vendor" style="justify-content:center;margin-top:12px;">
+                <div class="mrb-avatar">SA</div>
+                <div>
+                    <div style="font-weight:600;font-size:16px;">Serbouti Med Amine</div>
+                    <div style="color:#6b5a66;">
+                        <a href="https://www.serbouti.dev">www.serbouti.dev</a>
+                        &nbsp;&middot;&nbsp;
+                        <a href="mailto:serbouti.com@gmail.com">serbouti.com@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12">
+            <h3 class="oe_slogan">Changelog</h3>
+            <h4>17.0.1.0.0</h4>
+            <ul>
+                <li>Initial release: meeting rooms, equipment and bookings.</li>
+                <li>Conflict detection, approval workflow, capacity warning, recurring bookings.</li>
+                <li>Calendar / list / form views, dedicated User and Manager access groups.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+</div>
